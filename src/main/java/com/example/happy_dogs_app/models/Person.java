@@ -15,6 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Person {
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
