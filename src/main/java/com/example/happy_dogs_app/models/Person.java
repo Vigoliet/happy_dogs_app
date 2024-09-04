@@ -3,8 +3,6 @@ package com.example.happy_dogs_app.models;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Date;
-import java.util.List;
 
 @Entity
 @Getter
