@@ -1,20 +1,20 @@
 package com.example.happy_dogs_app.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
+@Table(name = "dogs")
+
 public class Dog {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
     private String name;
@@ -22,9 +22,4 @@ public class Dog {
     private String breed;
 
     private String imageUrl;
-
-    @ManyToOne
-    @JoinColumn(name = "person_id")
-    private Person person;
-
 }

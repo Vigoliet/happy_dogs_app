@@ -1,10 +1,7 @@
 package com.example.happy_dogs_app.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Date;
 import java.util.List;
@@ -14,6 +11,8 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
+@Table(name = "persons")
 public class Person {
 
     @Id
@@ -22,12 +21,6 @@ public class Person {
 
     private String name;
 
-    private String email;
-
-    private Date birthDate;
-
-    @OneToMany(mappedBy = "person")
-    private List<Dog> dogs;
 
 
 }

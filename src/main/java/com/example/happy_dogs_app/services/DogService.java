@@ -7,13 +7,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-@RequiredArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class DogService {
 
     private final DogRepository repository;
 
-    public boolean createDog(Dog dog){
+    public boolean createDog(Dog dog) {
         try {
             repository.save(dog);
             return true;
@@ -22,30 +22,42 @@ public class DogService {
         }
     }
 
-    public Iterable<Dog> getAllDogs(){
+    public Iterable<Dog> getAllDogs() {
         return repository.findAll();
     }
 
-    public Optional<Dog> getDogById(String id){
+
+    public Optional<Dog> getDogById(String id) {
         return repository.findById(id);
     }
 
-    public boolean updateDog(String id, Dog updateDog){
+
+    public boolean updateDog(String id, Dog updatedDog){
         Optional<Dog> existingDog = repository.findById(id);
 
         if (existingDog.isPresent()) {
             Dog dog = existingDog.get();
 
-            dog.setName(updateDog.getName());
-            dog.setBreed(updateDog.getBreed());
-            dog.setImageUrl(updateDog.getImageUrl());
+            dog.setName(updatedDog.getName());
+            dog.setBreed(updatedDog.getBreed());
+            dog.setImageUrl(updatedDog.getImageUrl());
+
+            repository.save(dog);
 
             return true;
-
-        } else{
+        }
+        else{
             return false;
         }
     }
 
+    public boolean deleteDog(String id) {
+        try {
+            repository.deleteById(id);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 
 }
