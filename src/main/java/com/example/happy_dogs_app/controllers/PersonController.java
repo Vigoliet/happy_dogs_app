@@ -1,5 +1,6 @@
 package com.example.happy_dogs_app.controllers;
 
+import com.example.happy_dogs_app.DTO.PersonDTO;
 import com.example.happy_dogs_app.models.Dog;
 import com.example.happy_dogs_app.models.Person;
 import com.example.happy_dogs_app.services.PersonService;
@@ -18,8 +19,8 @@ public class PersonController {
 
 
     @PostMapping
-    public ResponseEntity<String> createPerson(@RequestBody Person person){
-        var created = service.createPerson(person);
+    public ResponseEntity<String> createPerson(@RequestBody PersonDTO requestBody){
+        var created = service.createPerson(requestBody);
 
         if(created){
             return new ResponseEntity<>("Person created successfully", HttpStatus.CREATED);

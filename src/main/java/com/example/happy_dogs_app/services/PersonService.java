@@ -1,5 +1,6 @@
 package com.example.happy_dogs_app.services;
 
+import com.example.happy_dogs_app.DTO.PersonDTO;
 import com.example.happy_dogs_app.models.Person;
 import com.example.happy_dogs_app.repositories.PersonRepository;
 import lombok.RequiredArgsConstructor;
@@ -13,9 +14,9 @@ public class PersonService {
 
     private final PersonRepository repository;
 
-    public boolean createPerson(Person person) {
+    public boolean createPerson(PersonDTO dto) {
         try {
-            repository.save(person);
+            repository.save(dto.toPerson());
             return true;
         } catch (Exception e) {
             return false;
