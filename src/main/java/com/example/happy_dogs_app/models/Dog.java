@@ -22,4 +22,9 @@ public class Dog {
     private String breed;
 
     private String imageUrl;
+
+    @ManyToOne
+    private Person owner;
+
+ 
 }

@@ -3,6 +3,8 @@ package com.example.happy_dogs_app.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 
 @Entity
 @Getter
@@ -19,6 +21,7 @@ public class Person {
 
     private String name;
 
-
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+    private List<Dog> dogs;
 
 }
