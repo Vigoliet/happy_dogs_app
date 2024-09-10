@@ -31,7 +31,7 @@ public class PersonController {
     }
 
     @GetMapping
-    public ResponseEntity<Iterable<Person>> getAllPersons(){
+    public ResponseEntity<Iterable<PersonDTO>> getAllPersons(){
         var persons = service.getAllPersons();
         return new ResponseEntity<>(persons, HttpStatus.OK);
     }

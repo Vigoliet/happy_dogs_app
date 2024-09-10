@@ -6,6 +6,7 @@ import com.example.happy_dogs_app.repositories.PersonRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 @Service
@@ -23,8 +24,18 @@ public class PersonService {
         }
     }
 
-    public Iterable<Person> getAllPersons() {
-        return repository.findAll();
+    public Iterable<PersonDTO> getAllPersons() {
+        var persons = repository.findAll();
+
+        var personDTOs = new ArrayList<PersonDTO>();
+
+        for (var person : persons) {
+            var personDTO = new PersonDTO(person);
+            personDTOs.add(personDTO);
+        }
+
+        return personDTOs;
+
     }
 
     public Optional<Person> getPersonById(String id) {
